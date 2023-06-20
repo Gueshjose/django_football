@@ -1,0 +1,12 @@
+{% extends 'mercato/base.html'%}
+{% load static %}
+{% block content %}
+<div class="container mx-auto">
+    <h1>Create Player Form</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Validate">
+    </form>
+</div>
+{% endblock content %}
