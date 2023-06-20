@@ -57,7 +57,7 @@ class Player(models.Model):
     country=models.CharField(max_length=20)
     photo=models.ImageField(upload_to='img/')
     role=models.ForeignKey(Role, on_delete=models.CASCADE)
-    team=models.ForeignKey(Team, on_delete=models.CASCADE)
+    team=models.ForeignKey(Team, on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return  self.id
