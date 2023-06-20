@@ -29,7 +29,7 @@ class Command(BaseCommand):
             }
         )
        
-    #    Seed for Roles
+        #    Seed for Roles
         
         roles = ['Attaquant', 'Millieu','Defenseur','Gardien','Remplaçant']
         for role in roles: 
@@ -39,11 +39,9 @@ class Command(BaseCommand):
         )
         formation=[{'att':4,"mid":4,"def":2},{'att':4,"mid":3,"def":3},{'att':4,"mid":2,"def":4},{'att':4,"mid":5,"def":1},{'att':4,"mid":1,"def":5},
                     {'att':5,"mid":3,"def":2},{'att':5,"mid":4,"def":1},{'att':5,"mid":2,"def":3},{'att':5,"mid":1,"def":4},
-                    {'att':6,"mid":2,"def":2},{'att':6,"mid":3,"def":1},{'att':6,"mid":1,"def":3},{'att':3,"mid":4,"def":3},{'att':3,"mid":3,"def":4},{'att':3,"mid":5,"def":2},{'att':3,"mid":2,"def":5},
-                    {'att':3,"mid":6,"def":1},{'att':3,"mid":1,"def":6},{'att':2,"mid":4,"def":4},{'att':2,"mid":3,"def":5},{'att':2,"mid":5,"def":3},
-                    {'att':2,"mid":2,"def":6},{'att':2,"mid":6,"def":2},{'att':2,"mid":1,"def":7},{'att':2,"mid":7,"def":1},
-                    {'att':1,"mid":5,"def":4},{'att':1,"mid":4,"def":5},{'att':1,"mid":3,"def":6},{'att':1,"mid":6,"def":3},{'att':1,"mid":2,"def":7},{'att':1,"mid":7,"def":2},{'att':1,"mid":1,"def":8},{'att':1,"mid":8,"def":1},
-                    {'att':7,"mid":2,"def":1},{'att':7,"mid":1,"def":2},{'att':8,"mid":1,"def":1},]
+                    {'att':3,"mid":4,"def":3},{'att':3,"mid":3,"def":4},{'att':3,"mid":5,"def":2},{'att':3,"mid":2,"def":5},
+                    {'att':2,"mid":4,"def":4},{'att':2,"mid":3,"def":5},{'att':2,"mid":5,"def":3},
+                    {'att':1,"mid":5,"def":4},{'att':1,"mid":4,"def":5},]
         inserted_pks = seeder.execute()
         print(inserted_pks)
         
@@ -183,26 +181,70 @@ class Command(BaseCommand):
                     'logo':create_logo_file(),
                     'continent': Continent.objects.order_by('?').first(),
             })
+        inserted_pks = seeder.execute()
+        print(inserted_pks)
         
-        for _ in range(20):   
-            rand=randint(0,1)
-            if rand == 0:
-                gender ='H'
-                fName=fake.first_name_male()
-            else:
-                gender ='F'
-                fName=fake.first_name_female()
-            seeder.add_entity( Player, 1,{                
-                    'last_name': fake.last_name(),
-                    'first_name':fName,
-                    'country': fake.country(),
-                    'age': randint(16,35),
-                    'email': fake.ascii_email() ,
-                    'phone': fake.phone_number(),
-                    'photo':create_logo_file(),
-                    'role': Role.objects.order_by('?').first(),
-                    'team': None,
-            })
+        for team in Team.objects.all() :
+            att =int(team.maxATT)
+            mid= int(team.maxMID)
+            de = int(team.maxDEF)
+            g= int(team.maxG)
+            r = int(team.maxREM)
+            for _ in range(randint(8,14)):  
+                roleNB=randint(0,4) 
+                if roleNB == 0:
+                    role=Role.objects.get(poste='Attaquant')
+                    if att <= 0:
+                        team=None
+                    else :  
+                        team=team
+                        att= att-1
+                elif roleNB == 1:
+                    role=Role.objects.get(poste='Millieu')
+                    if mid <= 0:
+                        team=None
+                    else :  
+                        team=team
+                        mid= mid-1
+                elif roleNB == 2:
+                    role=Role.objects.get(poste='Defenseur')
+                    if de <= 0:
+                        team=None
+                    else :  
+                        team=team
+                        de= de-1
+                elif roleNB == 3:
+                    role=Role.objects.get(poste='Gardien')
+                    if g <= 0:
+                        team=None
+                    else :  
+                        team=team
+                        g= g-1
+                else:
+                    role=Role.objects.get(poste='Remplaçant')
+                    if r <= 0:
+                        team=None
+                    else :  
+                        team=team
+                        r= r-1
+                rand=randint(0,1)
+                if rand == 0:
+                    gender ='H'
+                    fName=fake.first_name_male()
+                else:
+                    gender ='F'
+                    fName=fake.first_name_female()
+                seeder.add_entity( Player, 1,{                
+                        'last_name': fake.last_name(),
+                        'first_name':fName,
+                        'country': fake.country(),
+                        'age': randint(16,35),
+                        'email': fake.ascii_email() ,
+                        'phone': fake.phone_number(),
+                        'photo':create_logo_file(),
+                        'role': role,
+                        'team': team,
+                })
             
             
 
@@ -212,11 +254,11 @@ class Command(BaseCommand):
     
 def create_logo_file():
         # Créez un fichier image factice avec un nom aléatoire
-        image_name = fake.file_name(extension='jpg')
+        image_name = fake.file_name(extension='png')
         image_path = Path('static/images/') / image_name
 
         # Créez un fichier temporaire pour l'image
-        image_temp_file = ImageFile(open('static/images/random.png', 'rb'))
+        image_temp_file = ImageFile(open('static/images/logo.png', 'rb'))
 
         # Copiez le fichier temporaire dans le dossier 'images'
         with image_path.open('wb') as destination:
@@ -227,7 +269,7 @@ def create_logo_file():
 
 def create_image_file():
         # Créez un fichier image factice avec un nom aléatoire
-        image_name = fake.file_name(extension='jpg')
+        image_name = fake.file_name(extension='png')
         image_path = Path('static/images/') / image_name
 
         # Créez un fichier temporaire pour l'image
