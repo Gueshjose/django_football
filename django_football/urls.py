@@ -21,4 +21,5 @@ from mercato import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('back/new_team',views.store_team,name="newTeam")
 ]

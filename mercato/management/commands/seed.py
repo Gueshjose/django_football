@@ -1,5 +1,5 @@
 from django_seed import Seed    
-from mercato.models import Team,Player, Role, Continent
+from mercato.models import Team,Player, Role, Continent, Tactics
 from django.core.management.base import BaseCommand
 from django.core.files.images import ImageFile
 from faker import Faker
@@ -16,6 +16,7 @@ class Command(BaseCommand):
     Role.objects.all().delete()
     Player.objects.all().delete()
     Continent.objects.all().delete()
+    Tactics.objects.all().delete()
     
     def handle(self, *args, **kwargs):
         seeder = Seed.seeder()
@@ -37,11 +38,24 @@ class Command(BaseCommand):
                 'poste' : role,
             }
         )
-        formation=[{'att':4,"mid":4,"def":2},{'att':4,"mid":3,"def":3},{'att':4,"mid":2,"def":4},{'att':4,"mid":5,"def":1},{'att':4,"mid":1,"def":5},
-                    {'att':5,"mid":3,"def":2},{'att':5,"mid":4,"def":1},{'att':5,"mid":2,"def":3},{'att':5,"mid":1,"def":4},
-                    {'att':3,"mid":4,"def":3},{'att':3,"mid":3,"def":4},{'att':3,"mid":5,"def":2},{'att':3,"mid":2,"def":5},
-                    {'att':2,"mid":4,"def":4},{'att':2,"mid":3,"def":5},{'att':2,"mid":5,"def":3},
-                    {'att':1,"mid":5,"def":4},{'att':1,"mid":4,"def":5},]
+        formation=[{'att':4,"mid":4,"def":2}, #
+                   {'att':4,"mid":3,"def":3},#
+                   {'att':4,"mid":2,"def":4},#
+                   {'att':4,"mid":5,"def":1},#
+                   {'att':4,"mid":1,"def":5},#
+                    {'att':5,"mid":3,"def":2},#
+                    {'att':5,"mid":4,"def":1},#
+                    {'att':5,"mid":2,"def":3},#
+                    {'att':5,"mid":1,"def":4},#
+                    {'att':3,"mid":4,"def":3},#
+                    {'att':3,"mid":3,"def":4},#
+                    {'att':3,"mid":5,"def":2},#
+                    {'att':3,"mid":2,"def":5},#
+                    {'att':2,"mid":4,"def":4},#
+                    {'att':2,"mid":3,"def":5},#
+                    {'att':2,"mid":5,"def":3},#
+                    {'att':1,"mid":5,"def":4},#
+                    {'att':1,"mid":4,"def":5},]
         inserted_pks = seeder.execute()
         print(inserted_pks)
         
@@ -184,6 +198,20 @@ class Command(BaseCommand):
         inserted_pks = seeder.execute()
         print(inserted_pks)
         
+        prenoms_masculins = [
+            "Liam", "Noah", "William", "James", "Oliver", "Benjamin", "Elijah", "Lucas", "Mason", "Logan",
+            "Alexander", "Ethan", "Jacob", "Michael", "Daniel", "Henry", "Jackson", "Sebastian", "Aiden", "Matthew",
+            "Samuel", "David", "Joseph", "Carter", "Owen", "Wyatt", "John", "Jack", "Luke", "Jayden",
+            "Dylan", "Grayson", "Levi", "Isaac", "Gabriel", "Julian"
+        ]
+
+        prenoms_feminins = [
+            "Olivia", "Emma", "Ava", "Sophia", "Isabella", "Mia", "Charlotte", "Amelia", "Harper", "Evelyn",
+            "Abigail", "Emily", "Elizabeth", "Mila", "Ella", "Avery", "Sofia", "Camila", "Aria", "Scarlett",
+            "Victoria", "Madison", "Luna", "Grace", "Chloe", "Penelope", "Layla", "Riley", "Zoey", "Nora",
+            "Lily", "Eleanor", "Hannah", "Lillian", "Addison", "Aubrey", "Ellie"
+        ]
+
         for team in Team.objects.all() :
             att =int(team.maxATT)
             mid= int(team.maxMID)
@@ -238,6 +266,7 @@ class Command(BaseCommand):
                         'last_name': fake.last_name(),
                         'first_name':fName,
                         'country': fake.country(),
+                        'gender':gender,
                         'age': randint(16,35),
                         'email': fake.ascii_email() ,
                         'phone': fake.phone_number(),
@@ -246,7 +275,31 @@ class Command(BaseCommand):
                         'team': team,
                 })
             
-            
+        formations=[{'name':"1-4-5","image":'formation/1-4-5.png'},
+                {'name':"1-5-4","image":'formation/1-5-4.png'},
+                {'name':"2-3-5","image":'formation/2-3-5.png'},
+                {'name':"2-5-3","image":'formation/2-5-3.png'},
+                {'name':"2-4-4","image":'formation/2-4-4.png'},
+                {'name':"3-3-4","image":'formation/3-3-4.png'},
+                {'name':"3-2-5","image":'formation/3-2-5.png'},
+                {'name':"3-4-3","image":'formation/3-4-3.png'},
+                {'name':"3-5-2","image":'formation/3-5-2.png'},
+                {'name':"4-1-5","image":'formation/4-1-5.png'},
+                {'name':"4-2-4","image":'formation/4-2-4.png'},
+                {'name':"4-3-3","image":'formation/4-3-3.png'},
+                {'name':"4-5-1","image":'formation/4-5-1.png'},
+                {'name':"5-1-4","image":'formation/5-1-4.png'},
+                {'name':"5-2-3","image":'formation/5-2-3.png'},
+                {'name':"5-3-2","image":'formation/5-3-2.png'},
+                {'name':"5-4-1","image":'formation/5-4-1.png'},
+                {'name':"5-4-1","image":'formation/5-4-1.png'},
+        ]
+        
+        for form in formations:
+            seeder.add_entity(Tactics,1,{
+                'name':form['name'],
+                'image':form['image'],
+            })
 
         inserted_pks = seeder.execute()
         print(inserted_pks)
