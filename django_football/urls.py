@@ -24,5 +24,6 @@ urlpatterns = [
     path('back/create_player/', views.create_player, name='create_player'),
     path('back/update_player/<int:id>/', views.update_player, name='update_player'),
     path('back/delete_player/<int:id>/', views.delete_player, name='delete_player'),
+    path('players/', views.players, name='players'),
     
 ]
