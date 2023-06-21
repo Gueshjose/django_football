@@ -270,7 +270,7 @@ class Command(BaseCommand):
                         'age': randint(16,35),
                         'email': fake.ascii_email() ,
                         'phone': fake.phone_number(),
-                        'photo':create_logo_file(),
+                        'photo':create_image_file(),
                         'role': role,
                         'team': team,
                 })
