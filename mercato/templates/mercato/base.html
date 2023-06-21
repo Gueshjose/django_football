@@ -16,7 +16,8 @@
 
     </head>
 
-    <body class="bg-green-500">
+    {% comment %} <body class='bg-no-repeat bg-center bg-cover' style="background-image: url({% static 'images/bg-player.png' %})"> {% endcomment %}
+    <body class='bg-indigo-600'>
         {% include 'mercato/navbar.html' %}
         <div class="container mx-auto mt-4">
             {% block content %}
