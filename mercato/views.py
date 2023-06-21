@@ -34,6 +34,20 @@ def delete_player(request, id):
     player.delete()
     return redirect('home')
 
+
+def players(request):
+    player = Player.objects.all()
+    continent = Continent.objects.all()
+    role = Role.objects.all()
+    team = Team.objects.all()
+    context = {
+        'player': player,
+        'continent': continent,
+        'role': role,
+        'team': team,
+    }
+    return render(request, 'mercato/admin/players.html', context)
+  
 def store_team(request):
     tactics = Tactics.objects.all()
     if request.method == 'POST':
