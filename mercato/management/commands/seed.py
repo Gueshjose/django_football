@@ -1,4 +1,4 @@
-from django_seed import Seed    
+from django_seed import Seed
 from mercato.models import Team,Player, Role, Continent
 from django.core.management.base import BaseCommand
 from django.core.files.images import ImageFile
@@ -241,7 +241,7 @@ class Command(BaseCommand):
                         'age': randint(16,35),
                         'email': fake.ascii_email() ,
                         'phone': fake.phone_number(),
-                        'photo':create_logo_file(),
+                        'photo':create_image_file(),
                         'role': role,
                         'team': team,
                 })
