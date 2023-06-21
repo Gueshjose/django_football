@@ -37,7 +37,7 @@ class Team(models.Model):
     maxDEF=models.IntegerField()
     maxG=models.IntegerField()
     maxREM=models.IntegerField()
-    logo=models.ImageField(upload_to='img/')
+    logo=models.ImageField(upload_to='images/')
     continent=models.ForeignKey(Continent, on_delete=models.CASCADE)
     
     def __str__(self):
@@ -55,9 +55,16 @@ class Player(models.Model):
     email=models.EmailField()
     gender=models.CharField(choices=Gender.choices, max_length=1)
     country=models.CharField(max_length=20)
-    photo=models.ImageField(upload_to='img/')
+    photo=models.ImageField(upload_to='images/')
     role=models.ForeignKey(Role, on_delete=models.CASCADE)
     team=models.ForeignKey(Team, on_delete=models.SET_NULL, null=True, blank=True, default=None)
     
     def __str__(self):
         return  self.id
+
+class Tactics(models.Model):
+    name=models.CharField(max_length=5)
+    image=models.ImageField(upload_to='formation/')
+    
+    def __str__(self):
+        return  self.name
