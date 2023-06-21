@@ -47,7 +47,11 @@ def players(request):
         'team': team,
     }
     return render(request, 'mercato/admin/players.html', context)
-  
+
+def show_player(request, id):
+    player = Player.objects.get(id=id)
+    return render(request, 'mercato/admin/show_player.html', {'player': player})
+
 def store_team(request):
     tactics = Tactics.objects.all()
     if request.method == 'POST':
