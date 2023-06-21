@@ -1,0 +1,19 @@
+{% extends 'mercato/base.html'%}
+{% load static %}
+{% block content %}
+<div class="container w-full">
+    <h1 class="mb-5">Create Player Form</h1>
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="flex flex-col gap-3 ">
+            {{ field.errors }}
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <input class="py-2 px-2 mt-5 justify-center" type="submit" value="Validate">
+    </form>
+
+</div>
+{% endblock content %}
