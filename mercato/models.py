@@ -11,6 +11,7 @@ class Role(models.Model):
         Remplaçant= "Remplaçant"
     
     poste=models.CharField(choices=Role.choices, max_length=10)
+    img=models.ImageField(upload_to='images/', default='None')
     
     def __str__(self):
         return self.poste
