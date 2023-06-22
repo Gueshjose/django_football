@@ -5,7 +5,8 @@ module.exports = {
     './node_modules/flowbite/**/*.js'
   ],
   theme: {
-    extend: {},
+    extend: {
+      'terrain': "url('/static/media/terrain.png')",},
   },
   plugins: [
     require('flowbite/plugin')

@@ -16,14 +16,15 @@
 
     </head>
 
-    <body class="bg-green-500">
+    <body class="bg-indigo-900">
         {% include 'mercato/navbar.html' %}
-        <div class="container mx-auto mt-4">
+        <div class="w-full mx-auto mt-4">
             {% block content %}
             <!-- Content Page -->
             {% endblock content %}
         </div>
 
+        <script type="module" src="{% static 'js/script.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     </body>
 
