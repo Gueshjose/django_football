@@ -16,14 +16,17 @@
 
     </head>
 
+
     <body style="{% if '/back/' in request.path %}background-image: url({% static 'images/vestiaire1.png' %}); background-repeat: no-repeat; background-position: 20% 20%; background-size: cover;{% else %}background-color: #4F46E5;{% endif %}">
+
         {% include 'mercato/navbar.html' %}
-        <div class="container mx-auto mt-4">
+        <div class="w-full mx-auto mt-4">
             {% block content %}
             <!-- Content Page -->
             {% endblock content %}
         </div>
 
+        <script type="module" src="{% static 'js/script.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     </body>
 
