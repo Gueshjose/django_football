@@ -9,9 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import pymysql
-pymysql.version_info = (1, 4, 6, 'final', 0)
-pymysql.install_as_MySQLdb()
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -82,7 +80,7 @@ DATABASES = {
         'NAME': 'django_football',
         'HOST':'127.0.0.1',
         'USER':'root',
-        'PASSWORD': '',
+        'PASSWORD': 'root',
         'PORT':'3306',
     }
 }
@@ -138,3 +136,10 @@ STATICFILES_DIRS=[
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import mimetypes
+mimetypes.add_type("application/javascript", ".js", True)
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}

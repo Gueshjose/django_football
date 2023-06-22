@@ -59,7 +59,7 @@ def players(request):
 
 def show_player(request, id):
     player = Player.objects.get(id=id)
-    return render(request, 'mercato/admin/show_player.html', {'player': player})
+    return render(request, 'mercato/home/show_player.html', {'player': player})
 
 def store_team(request):
     tactics = Tactics.objects.all()
@@ -89,6 +89,20 @@ def show_team(request,id):
     r=Player.objects.filter(team__id=id).filter(role__poste="Remplaçant")
     context=locals()
     return render(request,'mercato/home/show_team.html', context)
+
+def update_team(request,id):
+    team=Team.objects.prefetch_related('continent').get(id=id)
+    if request.method == 'POST':
+        form = TeamForm(request.POST, request.FILES, instance=team)   
+        if form.is_valid():
+            form.save()
+            return redirect('back')
+        else:
+            print(form.errors)
+    else:
+        form = TeamForm(instance=team)
+    context=locals()
+    return render(request,'mercato/admin/update_team.html', context)
 
 def delete_team(request,id):
     Team.objects.get(id=id).delete()

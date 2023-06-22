@@ -5,7 +5,8 @@ from django.core.files.images import ImageFile
 from faker import Faker
 from random import randint
 from pathlib import Path
-
+import os
+from django.conf import settings
 
 fake = Faker()
 
@@ -18,9 +19,10 @@ class Command(BaseCommand):
     Continent.objects.all().delete()
     Tactics.objects.all().delete()
     
+                
     def handle(self, *args, **kwargs):
         seeder = Seed.seeder()
-        
+        delete_all_images()
         # Seed for continents
         
         continents = ['Europe', 'Oceanie','Asie','Afrique','Amerique']
@@ -198,19 +200,6 @@ class Command(BaseCommand):
         inserted_pks = seeder.execute()
         print(inserted_pks)
         
-        prenoms_masculins = [
-            "Liam", "Noah", "William", "James", "Oliver", "Benjamin", "Elijah", "Lucas", "Mason", "Logan",
-            "Alexander", "Ethan", "Jacob", "Michael", "Daniel", "Henry", "Jackson", "Sebastian", "Aiden", "Matthew",
-            "Samuel", "David", "Joseph", "Carter", "Owen", "Wyatt", "John", "Jack", "Luke", "Jayden",
-            "Dylan", "Grayson", "Levi", "Isaac", "Gabriel", "Julian"
-        ]
-
-        prenoms_feminins = [
-            "Olivia", "Emma", "Ava", "Sophia", "Isabella", "Mia", "Charlotte", "Amelia", "Harper", "Evelyn",
-            "Abigail", "Emily", "Elizabeth", "Mila", "Ella", "Avery", "Sofia", "Camila", "Aria", "Scarlett",
-            "Victoria", "Madison", "Luna", "Grace", "Chloe", "Penelope", "Layla", "Riley", "Zoey", "Nora",
-            "Lily", "Eleanor", "Hannah", "Lillian", "Addison", "Aubrey", "Ellie"
-        ]
 
         for team in Team.objects.all() :
             att =int(team.maxATT)
@@ -304,7 +293,21 @@ class Command(BaseCommand):
         inserted_pks = seeder.execute()
         print(inserted_pks)
 
-    
+def delete_all_images():
+        # Chemin du répertoire des images
+        images_dir = os.path.join(settings.MEDIA_ROOT, 'images/')
+        print(images_dir)
+        # Parcourir tous les fichiers du répertoire
+        for file_name in os.listdir(images_dir):
+            if file_name != "random.png" and  file_name != "logo.png":
+                # Construire le chemin complet du fichier
+                file_path = os.path.join(images_dir, file_name)
+
+                # Vérifier si c'est un fichier (et non un sous-répertoire)
+                if os.path.isfile(file_path):
+                    # Supprimer le fichier
+                    os.remove(file_path)
+                    
 def create_logo_file():
         # Créez un fichier image factice avec un nom aléatoire
         image_name = fake.file_name(extension='png')
