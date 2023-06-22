@@ -1,19 +1,114 @@
-{% extends 'mercato/base.html'%}
-{% load static %}
-{% block content %}
-<div class="container w-full">
-    <h1 class="mb-5">Create Player Form</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="flex flex-col gap-3 ">
-            {{ field.errors }}
-            {{ field.label_tag }}
-            {{ field }}
-        </div>
-        {% endfor %}
-        <input class="py-2 px-2 mt-5 justify-center" type="submit" value="Validate">
-    </form>
+{% extends 'mercato/base.html' %}
 
-</div>
+{% block content %}
+{% load static %}
+<section
+    class="w-11/12 p-6 mx-auto bg-indigo-600 rounded-lg shadow-lg shadow-current dark:bg-gray-800 mt-20 mb-10 overflow-hidden relative ">
+    <svg class="absolute pointer-events-none opacity-10 top-0" xmlns="http://www.w3.org/2000/svg" width="1024"
+        height="1024" viewBox="0 0 512 512">
+        <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10"
+            stroke-width="32" />
+        <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"
+            d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172" />
+    </svg>
+    <h1 class="text-4xl font-bold text-white capitalize dark:text-white text-center underline underline-offset-2">Create
+        Your Player !</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div>
+
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="last_name">Last Name :</label>
+                    {{ form.last_name }}
+                </div>
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="first_name">First Name :</label>
+                    {{ form.first_name }}
+                </div>
+
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="age">Age :</label>
+                    {{ form.age }}
+                </div>
+
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="phone">Phone :</label>
+                    {{ form.phone }}
+                </div>
+
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="email">Email :</label>
+                    {{ form.email }}
+                </div>
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="country">Country :</label>
+                    {{ form.country }}
+                </div>
+                <div class="my-6">
+                    <label class="text-white dark:text-gray-200" for="gender">Sex :</label>
+                    {{ form.gender }}
+                </div>
+               
+
+
+
+
+
+                <div class="w-11/12 mx-auto my-6 p-4">
+                    <label class="block text-sm font-medium text-white">
+                        Image
+                    </label>
+                    <div
+                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <svg class="mx-auto h-12 w-12 text-white" stroke="currentColor" fill="none"
+                                viewBox="0 0 48 48" aria-hidden="true">
+                                <path
+                                    d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="flex text-sm text-gray-600">
+                            <label for="file-upload"
+                                class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                <span class="">Upload a file</span>
+                                {{ form.photo }}
+                            </label>
+                        </div>
+                        <p class="pl-1 text-white">or drag and drop</p>
+                    </div>
+                    <p class="text-xs text-white">
+                        PNG, JPG, GIF up to 10MB
+                    </p>
+                </div>
+            </div>
+            <fieldset>
+                <legend class="text-white font-bold text-center uppercase text-2xl">Choose a role :</legend>
+                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                    <p>{{ form.role}}</p><img src="{% static 'images/att.png' %}" alt="">
+                    <img src="{% static 'images/def.png' %}" alt="">
+                    <img src="{% static 'images/arm.png' %}" alt="">
+                    <img src="{% static 'images/GB.png' %}" alt="">
+                    <img src="{% static 'images/Mid.png' %}" alt="">
+                    <div>
+                        <legend class="text-white font-bold text-center uppercase text-2xl">Choose a Team :</legend>
+                        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                            <p>{{ form.team }}</p>
+        
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+           
+        </div>
+
+
+        <div class="flex justify-end mt-6">
+            <button
+                class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+        </div>
+    </form>
+</section>
 {% endblock content %}
