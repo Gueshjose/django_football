@@ -28,4 +28,8 @@ urlpatterns = [
     path('back/update_player/<int:id>/', views.update_player, name='update_player'),
     path('back/delete_player/<int:id>/', views.delete_player, name='delete_player'),
     path('players/', views.players, name='players'),
-]
+    path('back/show_player/<int:id>/', views.show_player, name='show_player'),
+    ]
+
+
+

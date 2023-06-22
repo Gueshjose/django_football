@@ -6,14 +6,14 @@ class PlayerForm(forms.ModelForm):
         model = Player
         fields = '__all__'
         widgets = {
-            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'age': forms.NumberInput(attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
-            'gender': forms.Select(attrs={'class': 'form-control'}),
-            'country': forms.TextInput(attrs={'class': 'form-control'}),
-            'photo' : forms.FileInput(attrs={'class': 'form-control'}),
-            'role': forms.Select(attrs={'class': 'form-control'}),
-            'team': forms.Select(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'rounded-lg'}),
+            'first_name': forms.TextInput(attrs={'class': 'rounded-lg'}),
+            'age': forms.NumberInput(attrs={'class': 'rounded-lg'}),
+            'phone': forms.TextInput(attrs={'class': 'rounded-lg'}),
+            'email': forms.EmailInput(attrs={'class': 'rounded-lg'}),
+            'gender': forms.Select(attrs={'class': 'rounded-lg'}),
+            'country': forms.TextInput(attrs={'class': 'rounded-lg'}),
+            'photo' : forms.FileInput(attrs={'class': 'rounded-lg'}),
+            'role': forms.Select(attrs={'class': 'rounded-lg'}),
+            'team': forms.Select(attrs={'class': 'rounded-lg'}),
         }
