@@ -59,7 +59,7 @@ def players(request):
 
 def show_player(request, id):
     player = Player.objects.get(id=id)
-    return render(request, 'mercato/admin/show_player.html', {'player': player})
+    return render(request, 'mercato/home/show_player.html', {'player': player})
 
 def store_team(request):
     tactics = Tactics.objects.all()

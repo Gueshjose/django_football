@@ -7,13 +7,15 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="overflow-hidden sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-500" style="background-image: url({% static 'images/bg-player.png' %});">
+                    <table class="min-w-full divide-y divide-gray-500" style="background-image: url({% static 'images/bg-player.png' %}); background-position: center">
                         <thead class="bg-gray-50 bg-opacity-30 text-white">
                             <tr>
                                 <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">Last Name</th>
                                 <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">First Name</th>
                                 <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">Team</th>
-                                <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">View More</th>
+                                <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">Details</th>
+                                <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">Update</th>
+                                <th class="px-6 py-3 text-left text-lg font-medium uppercase tracking-wider">Delete</th>
                             </tr>
                         </thead>
                         <tbody class="bg-white bg-opacity-30 divide-y divide-gray-500">
@@ -26,6 +28,15 @@
                                     <a href="{% url 'show_player' p.id %}"><button class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                         More
                                     </button></a>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{% url 'update_player' p.id %}"><button class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        Update
+                                    </button></a>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{% url 'delete_player' p.id %}"><button class="px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        Delete
                                 </td>
                             </tr>
                             {% endfor %}
