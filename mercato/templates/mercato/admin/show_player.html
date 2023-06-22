@@ -1,0 +1,17 @@
+{% extends 'mercato/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mx-auto p-8 h-screen flex flex-col items-center justify-center">
+    <h1 class="text-center text-3xl font-bold mb-8 text-white">Fiche du joueur {{ player.last_name }}</h1>
+    <div class="flex bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+        <img class="object-cover h-auto w-48 rounded-l-lg" src="{% static player.photo %}" alt="Player image">
+        <div class="flex flex-col p-4 leading-normal gap-5">
+            <img class="object-cover w-full h-48 rounded-t-lg" src="{% static player.team.logo %}" alt="Club logo">
+            <h5 class="mt-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ player.last_name}} {{ player.first_name }}</h5>
+            <p>Phone number : {{ player.phone }} - <span class="text-white">Email : {{ player.email }}</span></p>
+            <p>Rôle : {{ player.role.poste }} <span class="text-white"> &nbsp; - &nbsp; Team : {{ player.team.name }}</span></p>
+            <p>Sex : {{ player.gender }} <span>&nbsp; - &nbsp; Country : {{ player.country }}</span><span>&nbsp; - &nbsp; Age : {{ player.age }} ans </span></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

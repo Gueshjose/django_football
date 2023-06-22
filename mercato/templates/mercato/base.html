@@ -16,7 +16,9 @@
 
     </head>
 
-    <body class="bg-indigo-900">
+
+    <body style="{% if '/back/' in request.path %}background-image: url({% static 'images/vestiaire1.png' %}); background-repeat: no-repeat; background-position: 20% 20%; background-size: cover;{% else %}background-color: #4F46E5;{% endif %}">
+
         {% include 'mercato/navbar.html' %}
         <div class="w-full mx-auto mt-4">
             {% block content %}
