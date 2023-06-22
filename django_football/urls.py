@@ -21,6 +21,8 @@ from mercato import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    path('show_team/<int:id>/',views.show_team, name="showTeam"),
+    path('back/',views.back,name='back'),
     path('back/new_team',views.store_team,name="newTeam"),
     path('back/create_player/', views.create_player, name='create_player'),
     path('back/update_player/<int:id>/', views.update_player, name='update_player'),
@@ -28,3 +30,6 @@ urlpatterns = [
     path('players/', views.players, name='players'),
     path('back/show_player/<int:id>/', views.show_player, name='show_player'),
     ]
+
+
+
