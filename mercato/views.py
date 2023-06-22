@@ -9,6 +9,8 @@ def home(request):
     return render(request, 'mercato/home/home.html')
 
 def create_player(request):
+    role = Role.objects.all()
+    team = Team.objects.all()
     if request.method == 'POST':
         form = PlayerForm(request.POST, request.FILES)
         if form.is_valid():
@@ -16,7 +18,8 @@ def create_player(request):
             return redirect('home')
     else:
         form = PlayerForm()
-    return render(request, 'mercato/admin/create_player.html', {'form': form})
+    context = locals()
+    return render(request, 'mercato/admin/create_player.html', context)
 
 def update_player(request, id):
     player = Player.objects.get(id=id)
