@@ -14,12 +14,12 @@ function init() {
     */
 
     const mtlLoader = new MTLLoader();
-    mtlLoader.load('../static/models/Soccer_Arena_Large_03.mtl', function (materials) {
+    mtlLoader.load('http://127.0.0.1:8000//static/models/Soccer_Arena_Large_03.mtl', function (materials) {
         materials.preload();
 
         const objLoader = new OBJLoader();
         objLoader.setMaterials(materials);
-        objLoader.load('../static/models/Soccer_Arena_Large_03.obj', function (object) {
+        objLoader.load('http://127.0.0.1:8000/static/models/Soccer_Arena_Large_03.obj', function (object) {
             object.position.x=0
             object.position.y=0
             object.position.z=0
@@ -40,11 +40,11 @@ function init() {
     scene.add(ambientLight)
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.6)
     directionalLight.shadow.mapSize.set(1024, 1024)
-    // directionalLight.shadow.camera.far = 15
-    // directionalLight.shadow.camera.left = - 7
-    // directionalLight.shadow.camera.top = 7
-    // directionalLight.shadow.camera.right = 7
-    // directionalLight.shadow.camera.bottom = - 7
+    directionalLight.shadow.camera.far = 15
+    directionalLight.shadow.camera.left = - 7
+    directionalLight.shadow.camera.top = 7
+    directionalLight.shadow.camera.right = 7
+    directionalLight.shadow.camera.bottom = - 7
     directionalLight.position.set(5, 5, 5)
     scene.add(directionalLight)
 
