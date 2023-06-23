@@ -1,100 +1,90 @@
 {% extends 'mercato/base.html'%}
 
 
-
 {% block content %}
-    {% load static %}
+{% load static %}
 
-    <h1 class="text-center text-4xl font-bold underline uppercase text-indigo-600 my-8">ALL The Teams</h1>
-    <div class="relative overflow-x-auto shadow-lg sm:rounded-lg w-11/12 mx-auto my-4 ">
-        
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-indigo-t">
-            <thead class=" text-xs text-gray-700 uppercase  ">
-                <tr>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Team Name
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Continent
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Country
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        City
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Logo Link
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Max Striker
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Max Midfield
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Max Defense
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Max Goalkeeper
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Max Substitute
-                    </th>
-                    <th scope="col" class="px-6 py-3 text-center">
-                        Action
-                    </th>
-                </tr>
-            </thead>
-            <tbody >
-                {% for team in teams  %}
-                    <tr class="text-white border-b ">
-                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap text-white">
-                            {{ team.name }}
-                        </th>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.continent }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.pays }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.ville }}
-                        </td>
-                        <th scope="row" class=" text-center px-6 py-4 font-medium  whitespace-nowrap text-white">
-                            {{ team.logo }}
-                        </th>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.maxATT }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.maxMID }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.maxDEF }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.maxG }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            {{ team.maxREM }}
-                        </td>
-                        <td class="px-6 py-4 text-center ">
-                            <a href="{% url 'update_team' team.id %}" >
-                                <button class=" p-2 rounded-lg bg-yellow-400 text-white">
-                                    Edit
-                                </button>
-                            </a>
-                            <a href="{% url 'delete_team' team.id %}" >
-                                <button class=" p-2 rounded-lg bg-red-600 text-white">
-                                    Delete
-                                </button>
-                            </a>
-                            
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>  
+<h1 class="text-center text-4xl font-bold underline uppercase text-indigo-600 my-8">ALL The Teams</h1>
+<div class="shadow-lg sm:rounded-lg w-11/12 text-sm text-left text-white dark:text-gray-400 bg-indigo-t mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-11 gap-4 p-4">
+
+    <div class="col-span-1 font-bold text-md">Team Name</div>
+    <div class="col-span-1 font-bold text-md">Continent</div>
+    <div class="col-span-1 font-bold text-md">Country</div>
+    <div class="col-span-1 font-bold text-md">City</div>
+    <div class="col-span-1 font-bold text-md">Logo Link</div>
+    <div class="col-span-1 font-bold text-md">Max Striker</div>
+    <div class="col-span-1 font-bold text-md">Max Midfield</div>
+    <div class="col-span-1 font-bold text-md">Max Defense</div>
+    <div class="col-span-1 font-bold text-md">Max Goal</div>
+    <div class="col-span-1 font-bold text-md">Max Subs</div>
+    <div class="col-span-1 font-bold text-md">Actions</div>
+
+    {% for team in teams %}
+    <div class="col-span-1">{{ team.name }}</div>
+    <div class="col-span-1">{{ team.continent }}</div>
+    <div class="col-span-1">{{ team.pays}}</div>
+    <div class="col-span-1">{{ team.ville }}</div>
+    <div class="col-span-1 text-xs">{{ team.logo }}</div>
+    <div class="col-span-1 text-center">{{ team.maxATT }}</div>
+    <div class="col-span-1 text-center">{{ team.maxMID }}</div>
+    <div class="col-span-1 text-center">{{ team.maxDEF}}</div>
+    <div class="col-span-1 text-center">{{ team.maxG }}</div>
+    <div class="col-span-1 text-center">{{ team.maxREM }}</div>
+    <div class="col-span-1">
+        <a href="{% url 'update_team' team.id %}">
+            <button class=" p-2 rounded-lg bg-yellow-400 text-white">
+                Edit
+            </button>
+        </a>
+        <a href="{% url 'delete_team' team.id %}">
+            <button class=" p-2 rounded-lg bg-red-600 text-white">
+                Delete
+            </button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<h1 class="text-center text-4xl font-bold underline uppercase text-indigo-600 my-8">ALL The Players</h1>
+<div class="shadow-lg sm:rounded-lg w-11/12 text-sm text-left text-white dark:text-gray-400 bg-indigo-t mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-11 gap-4 p-4">
+
+    <div class="col-span-1 font-bold text-md">Last Name</div>
+    <div class="col-span-1 font-bold text-md">First Name</div>
+    <div class="col-span-1 font-bold text-md">Age</div>
+    <div class="col-span-1 font-bold text-md">Phone</div>
+    <div class="col-span-1 font-bold text-md">eMail</div>
+    <div class="col-span-1 font-bold text-md text-center">Gender</div>
+    <div class="col-span-1 font-bold text-md">Country</div>
+    <div class="col-span-1 font-bold text-md">Photo</div>
+    <div class="col-span-1 font-bold text-md">Role</div>
+    <div class="col-span-1 font-bold text-md">Team</div>
+    <div class="col-span-1 font-bold text-md">Actions</div>
+
+    {% for player in players %}
+    <div class="col-span-1">{{ player.last_name }}</div>
+    <div class="col-span-1">{{ player.first_name }}</div>
+    <div class="col-span-1">{{ player.age}}</div>
+    <div class="col-span-1">{{ player.phone }}</div>
+    <div class="col-span-1 text-xs">{{ player.email }}</div>
+    <div class="col-span-1 text-center">{{ player.gender }}</div>
+    <div class="col-span-1">{{ player.country }}</div>
+    <div class="col-span-1 text-xs">{{ player.photo}}</div>
+    <div class="col-span-1">{{ player.role }}</div>
+    <div class="col-span-1">{{ player.team }}</div>
+    <div class="col-span-1">
+        <a href="{% url 'update_player' player.id %}">
+            <button class=" p-2 rounded-lg bg-yellow-400 text-white">
+                Edit
+            </button>
+        </a>
+        <a href="{% url 'delete_player' player.id %}">
+            <button class=" p-2 rounded-lg bg-red-600 text-white">
+                Delete
+            </button>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
 
 {% endblock content %}
