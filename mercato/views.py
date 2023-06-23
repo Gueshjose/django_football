@@ -139,7 +139,6 @@ def update_team(request,id):
     return render(request,'mercato/admin/update_team.html', context)
 
 def delete_team(request,id):
-<<<<<<< HEAD
     team=Team.objects.get(id=id)
     if team.logo:
         # Supprimer le logo du système de fichiers
@@ -148,7 +147,3 @@ def delete_team(request,id):
     # Supprimer la team
     team.delete()
     return redirect('back')
-=======
-    Team.objects.get(id=id).delete()
-    return redirect('back')
->>>>>>> cb5c4b16303a7f94e51ec26e5a6e7aba6696f48f
