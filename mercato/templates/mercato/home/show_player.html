@@ -7,10 +7,14 @@
     <div class="flex bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
         <img class="object-cover h-auto w-48 rounded-l-lg" src="{% static player.photo %}" alt="Player image">
         <div class="flex flex-col p-4 leading-normal gap-5">
+            {% if player.team %}
             <img class="object-cover w-full h-48 rounded-t-lg" src="{% static player.team.logo %}" alt="Club logo">
+            <p>Rôle : {{ player.role.poste }} <a href="{% url 'showTeam' player.team.id %}"><span class="text-white"> &nbsp; - &nbsp; Team : {{ player.team.name }}</span></a></p>
+            {% else %}
+            <p>Rôle : {{ player.role.poste }}</p>
+            {% endif %}
             <h5 class="mt-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ player.last_name}} {{ player.first_name }}</h5>
             <p>Phone number : {{ player.phone }} - <span class="text-white">Email : {{ player.email }}</span></p>
-            <p>Rôle : {{ player.role.poste }} <a href="{% url 'showTeam' player.team.id %}"><span class="text-white"> &nbsp; - &nbsp; Team : {{ player.team.name }}</span></a></p>
             <p>Sex : {{ player.gender }} <span>&nbsp; - &nbsp; Country : {{ player.country }}</span><span>&nbsp; - &nbsp; Age : {{ player.age }} ans </span></p>
         </div>
     </div>
