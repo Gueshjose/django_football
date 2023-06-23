@@ -17,10 +17,10 @@
     </head>
 
 
-    <body style="{% if '/back/' in request.path %}background-image: url({% static 'images/vestiaire1.png' %}); background-repeat: no-repeat; background-position: 20% 20%; background-size: cover;{% else %}background-color: #4F46E5;{% endif %}">
+    <body style="{% if '/back/' in request.path %}background-image: url({% static 'images/vestiaire1.png' %}); background-repeat: no-repeat; background-position: 20% 20%; background-size: cover;{% else %}background-color: #4F46E5;{% endif %}" class=" w-screen overflow-x-hidden p-0 m-0">
 
         {% include 'mercato/navbar.html' %}
-        <div class="w-full mx-auto mt-4">
+        <div class=" mx-auto w-full overflow-x-hidden ">
             {% block content %}
             <!-- Content Page -->
             {% endblock content %}
