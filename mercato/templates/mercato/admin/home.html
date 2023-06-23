@@ -1,0 +1,100 @@
+{% extends 'mercato/base.html'%}
+
+
+
+{% block content %}
+    {% load static %}
+
+    <h1 class="text-center text-4xl font-bold underline uppercase text-indigo-600 my-8">ALL The Teams</h1>
+    <div class="relative overflow-x-auto shadow-lg sm:rounded-lg w-11/12 mx-auto my-4 ">
+        
+        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-indigo-t">
+            <thead class=" text-xs text-gray-700 uppercase  ">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Team Name
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Continent
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Country
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        City
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Logo Link
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Max Striker
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Max Midfield
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Max Defense
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Max Goalkeeper
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Max Substitute
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-center">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody >
+                {% for team in teams  %}
+                    <tr class="text-white border-b ">
+                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            {{ team.name }}
+                        </th>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.continent }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.pays }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.ville }}
+                        </td>
+                        <th scope="row" class=" text-center px-6 py-4 font-medium  whitespace-nowrap text-white">
+                            {{ team.logo }}
+                        </th>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.maxATT }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.maxMID }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.maxDEF }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.maxG }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            {{ team.maxREM }}
+                        </td>
+                        <td class="px-6 py-4 text-center ">
+                            <a href="{% url 'update_team' team.id %}" >
+                                <button class=" p-2 rounded-lg bg-yellow-400 text-white">
+                                    Edit
+                                </button>
+                            </a>
+                            <a href="{% url 'delete_team' team.id %}" >
+                                <button class=" p-2 rounded-lg bg-red-600 text-white">
+                                    Delete
+                                </button>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>  
+
+{% endblock content %}

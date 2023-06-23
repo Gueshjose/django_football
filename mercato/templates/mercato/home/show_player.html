@@ -1,6 +1,7 @@
 {% extends 'mercato/base.html' %}
 {% load static %}
 {% block content %}
+<canvas class="webgl min-h-screen h-full w-full absolute top-0 z-0 opacity-40"></canvas>
 <div class="container mx-auto p-8 h-screen flex flex-col items-center justify-center">
     <h1 class="text-center text-3xl font-bold mb-8 text-white">Fiche du joueur {{ player.last_name }}</h1>
     <div class="flex bg-white bg-opacity-30 backdrop-filter backdrop-blur-lg rounded-lg shadow-lg dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
