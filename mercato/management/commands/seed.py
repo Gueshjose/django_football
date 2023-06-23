@@ -34,10 +34,16 @@ class Command(BaseCommand):
        
         #    Seed for Roles
         
-        roles = ['Attaquant', 'Millieu','Defenseur','Gardien','Remplaçant']
+        roles = [{'name':'Attaquant', 'img':'media/att.png'},
+                 {'name': 'Millieu', 'img':'media/def.png'},
+                 {'name':'Defenseur','img':'media/Mid.png'},
+                 {'name':'Gardien','img':'media/GB.png'},
+                 {'name':'Remplaçant','img':'media/sub.png'}
+                 ]
         for role in roles: 
             seeder.add_entity(Role, 1, {
-                'poste' : role,
+                'poste' : role['name'],
+                'img': role['img']
             }
         )
         formation=[{'att':4,"mid":4,"def":2}, #
