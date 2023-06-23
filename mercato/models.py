@@ -29,9 +29,14 @@ class Continent(models.Model):
         return self.name
 
 class Team(models.Model):
+    class Compo(models.TextChoices):
+        Masculine='M'
+        Feminine="F"
+        Mixte='X'
     name=models.CharField(max_length=20)
     ville=models.CharField(max_length=20)
     pays=models.CharField(max_length=20)
+    composition=models.CharField(choices=Compo.choices,max_length=1, default="X")
     maxATT=models.IntegerField()
     maxMID=models.IntegerField()
     maxDEF=models.IntegerField()

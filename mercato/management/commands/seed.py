@@ -185,10 +185,18 @@ class Command(BaseCommand):
         
         for _ in range(5):   
             rand=randint(0,len(formation)-1)
+            compo=randint(0,2)
+            if compo == 0:
+                cp="M"
+            elif compo==1:
+                cp="F"
+            else:
+                cp="X"   
             seeder.add_entity( Team, 1,{                
                     'name':equipes[randint(0,len(equipes)-1)],
                     'ville':fake.city(),
                     'pays': fake.country(),
+                    'composition':cp,
                     'maxATT':formation[rand]['att'],
                     'maxMID':formation[rand]['mid'],
                     'maxDEF':formation[rand]['def'],
@@ -207,45 +215,60 @@ class Command(BaseCommand):
             de = int(team.maxDEF)
             g= int(team.maxG)
             r = int(team.maxREM)
-            for _ in range(randint(8,14)):  
-                roleNB=randint(0,4) 
+            for _ in range(randint(11,20)):  
+                roleNB=randint(0,3) 
                 if roleNB == 0:
                     role=Role.objects.get(poste='Attaquant')
                     if att <= 0:
-                        team=None
+                        if r <= 0:
+                            t=None
+                        else :  
+                            role=Role.objects.get(poste='Remplaçant')
+                            t=team
+                            r= r-1
                     else :  
-                        team=team
+                        t=team
                         att= att-1
                 elif roleNB == 1:
                     role=Role.objects.get(poste='Millieu')
                     if mid <= 0:
-                        team=None
+                        if r <= 0:
+                            t=None
+                        else :  
+                            role=Role.objects.get(poste='Remplaçant')
+                            t=team
+                            r= r-1
                     else :  
-                        team=team
+                        t=team
                         mid= mid-1
                 elif roleNB == 2:
                     role=Role.objects.get(poste='Defenseur')
                     if de <= 0:
-                        team=None
+                        if r <= 0:
+                            t=None
+                        else :  
+                            role=Role.objects.get(poste='Remplaçant')
+                            t=team
+                            r= r-1
                     else :  
-                        team=team
+                        t=team
                         de= de-1
-                elif roleNB == 3:
+                else:
                     role=Role.objects.get(poste='Gardien')
                     if g <= 0:
-                        team=None
+                        if r <= 0:
+                            t=None
+                        else :  
+                            role=Role.objects.get(poste='Remplaçant')
+                            t=team
+                            r= r-1
                     else :  
-                        team=team
+                        t=team
                         g= g-1
-                else:
-                    role=Role.objects.get(poste='Remplaçant')
-                    if r <= 0:
-                        team=None
-                    else :  
-                        team=team
-                        r= r-1
+                    
+                    
                 rand=randint(0,1)
-                if rand == 0:
+                if (rand == 0 and team.composition == "X" ) or (team.composition == "M"):
                     gender ='H'
                     fName=fake.first_name_male()
                 else:
@@ -261,7 +284,7 @@ class Command(BaseCommand):
                         'phone': fake.phone_number(),
                         'photo':create_image_file(),
                         'role': role,
-                        'team': team,
+                        'team': t,
                 })
             
         formations=[{'name':"1-4-5","image":'formation/1-4-5.png'},
