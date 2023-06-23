@@ -17,39 +17,43 @@
         {% csrf_token %}
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-
-                <div class="my-6">
+                <!-- Form fields with uniform size and spacing -->
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="last_name">Last Name :</label>
                     {{ form.last_name }}
                 </div>
-                <div class="my-6">
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="first_name">First Name :</label>
                     {{ form.first_name }}
                 </div>
 
-                <div class="my-6">
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="age">Age :</label>
                     {{ form.age }}
                 </div>
 
-                <div class="my-6">
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="phone">Phone :</label>
                     {{ form.phone }}
                 </div>
 
-                <div class="my-6">
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="email">Email :</label>
                     {{ form.email }}
                 </div>
-                <div class="my-6">
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="country">Country :</label>
                     {{ form.country }}
                 </div>
-                <div class="my-6">
+                <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="gender">Sex :</label>
                     {{ form.gender }}
                 </div>
-               
+                <div class="my-6 grid-cols-1 grid">
+                    <label class="text-white dark:text-gray-200" for="gender">Team :</label>
+                    {{ form.team }}
+                </div>
+
 
 
 
@@ -83,31 +87,35 @@
                     </p>
                 </div>
             </div>
-            <fieldset>
-                <legend class="text-white font-bold text-center uppercase text-2xl">Choose a role :</legend>
-                <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2">
-                    <p>{{ form.role}}</p><img src="{% static 'images/att.png' %}" alt="">
-                    <img src="{% static 'images/def.png' %}" alt="">
-                    <img src="{% static 'images/arm.png' %}" alt="">
-                    <img src="{% static 'images/GB.png' %}" alt="">
-                    <img src="{% static 'images/Mid.png' %}" alt="">
-                    <div>
-                        <legend class="text-white font-bold text-center uppercase text-2xl">Choose a Team :</legend>
-                        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2">
-                            <p>{{ form.team }}</p>
-        
-                        </div>
-                    </div>
+            <!-- Role selection -->
+            <fieldset class="mt-16">
+                <legend class="text-white font-bold  uppercase text-lg mb-10 text-center">What do you play ?</legend>
+                <div class="grid grid-cols-2 flex flex-col sm:grid-cols-2 md:grid-cols-4 gap-2">
+                    {% for r in role %}
+                    <label class="text-white font-light" for="poste"><img src="{% static r.img %}" alt="">{{ r.poste }}</label>
+                    <input type="radio" name="role" id="poste" value="{{ r.id }}">
+                    {% endfor %}
+                    <!-- {{ form.role }} -->
+              
                 </div>
+
+                <!-- <div class="mt-36">
+                    <legend class="text-white font-bold text-center uppercase text-2xl">Choose a Team :</legend>
+                    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                        <p>{{ form.team }}</p>
+                    </div>
+                </div> -->
             </fieldset>
 
-           
+            <!-- Team selection -->
+
+
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+
         </div>
-
-
-        <div class="flex justify-end mt-6">
-            <button
-                class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
         </div>
     </form>
 </section>
