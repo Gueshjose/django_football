@@ -38,7 +38,6 @@ def home(request):
 def back(request):
     players=Player.objects.prefetch_related('role','team').all()
     teams=Team.objects.prefetch_related('continent').all()
-    
     context=locals()
     return render(request,'mercato/admin/home.html',context)
 

@@ -4,87 +4,88 @@
 
 {% block content %}
     {% load static %}
+
     <h1 class="text-center text-4xl font-bold underline uppercase text-indigo-600 my-8">ALL The Teams</h1>
-    <div class="relative  shadow-lg sm:rounded-lg lg:max-w-max w-11/12 mx-auto my-4 ">
+    <div class="relative overflow-x-auto shadow-lg sm:rounded-lg w-11/12 mx-auto my-4 ">
         
         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-indigo-t">
-            <thead class="w-full text-xs text-gray-700 uppercase  ">
-                <tr class="w-full">
-                    <th scope="col" class="xl:px-6 md:px-2 px-1 py-3 text-center">
+            <thead class=" text-xs text-gray-700 uppercase  ">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-center">
                         Team Name
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Continent
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Country
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         City
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Logo Link
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Max Striker
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Max Midfield
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Max Defense
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Max Goalkeeper
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Max Substitute
                     </th>
-                    <th scope="col" class="xl:px-6 lg:3 md:px-2 px-1 py-3 text-center">
+                    <th scope="col" class="px-6 py-3 text-center">
                         Action
                     </th>
                 </tr>
             </thead>
-            <tbody class="w-full" >
+            <tbody >
                 {% for team in teams  %}
-                    <tr class="text-white border-b w-full">
-                        <th scope="row" class="xl:px-6 lg:3 md:px-2 px-1 py-4 font-medium  whitespace-nowrap text-white">
+                    <tr class="text-white border-b ">
+                        <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap text-white">
                             {{ team.name }}
                         </th>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.continent }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.pays }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.ville }}
                         </td>
-                        <th scope="row" class=" text-center xl:px-6 lg:3 md:px-2 px-1 py-4 font-medium  whitespace-nowrap text-white">
+                        <th scope="row" class=" text-center px-6 py-4 font-medium  whitespace-nowrap text-white">
                             {{ team.logo }}
                         </th>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.maxATT }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.maxMID }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.maxDEF }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.maxG }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             {{ team.maxREM }}
                         </td>
-                        <td class="xl:px-6 lg:3 md:px-2 px-1 py-4 text-center ">
+                        <td class="px-6 py-4 text-center ">
                             <a href="{% url 'update_team' team.id %}" >
-                                <button class=" lg:p-2 p-1 rounded-lg bg-yellow-400 text-white">
+                                <button class=" p-2 rounded-lg bg-yellow-400 text-white">
                                     Edit
                                 </button>
                             </a>
                             <a href="{% url 'delete_team' team.id %}" >
-                                <button class=" lg:p-2 p-1 rounded-lg bg-red-600 text-white">
+                                <button class=" p-2 rounded-lg bg-red-600 text-white">
                                     Delete
                                 </button>
                             </a>
