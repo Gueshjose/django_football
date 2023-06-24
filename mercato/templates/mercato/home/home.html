@@ -2,74 +2,126 @@
 
 
 {% block content %}
-    {% load static %}
+{% load static %}
 
-    <canvas class="webgl min-h-screen h-full w-full absolute top-0 z-0 opacity-40"></canvas>
+<canvas class="webgl min-h-screen h-full w-full absolute top-0 z-0 opacity-40"></canvas>
 
 
-    <!-- Team Full -->
+<!-- Team Full -->
 
-    <div class="z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
-        <h2 class="z-10 text-center mx-auto uppercase font-bold text-white text-3xl">Team Full</h2>
-        <div class=" z-10 flex flex-nowrap justify-center h-52">
+<div class="z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
+    <h2 class="z-10 text-center mx-auto uppercase font-bold text-white text-3xl">Team Full</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52">
 
-            {% for team in fullTeam  %}
-                <a href="{% url 'showTeam' team.id %}">
-                    <div class="flex flex-col mx-auto w-full h-full p-6">
-                        <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
-                        <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+        {% for team in fullTeam %}
+        <a href="{% url 'showTeam' team.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
     </div>
+</div>
 
-    <!-- Team Not Full -->
+<!-- Team Not Full -->
 
-    <div class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right my-6 p-2">
-        <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Team Not Full</h2>
-        <div class=" z-10 flex flex-nowrap justify-center h-52 ">
-            {% for team in notFullTeam  %}
-                <a href="{% url 'showTeam' team.id %}">
-                    <div class="flex flex-col mx-auto w-full h-full p-6">
-                        <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
-                        <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+<div
+    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right my-6 p-2">
+    <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Team Not Full</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+        {% for team in notFullTeam %}
+        <a href="{% url 'showTeam' team.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
     </div>
+</div>
 
-    <!-- Team Europ -->
+<!-- Team Europ -->
 
-    <div class="z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
-        <h2 class="z-10 text-center mx-auto uppercase font-bold text-white text-3xl">Team Europe</h2>
-        <div class=" z-10 flex flex-nowrap justify-center h-52">
+<div class="z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
+    <h2 class="z-10 text-center mx-auto uppercase font-bold text-white text-3xl">Team Europe</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52">
 
-            {% for team in teamEurope  %}
-                <a href="{% url 'showTeam' team.id %}">
-                    <div class="flex flex-col mx-auto w-full h-full p-6">
-                        <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
-                        <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+        {% for team in teamEurope %}
+        <a href="{% url 'showTeam' team.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
     </div>
+</div>
 
-    <!-- Team Not Full -->
+<!-- Team Not Full -->
 
-    <div class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
-        <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Team Not Europe</h2>
-        <div class=" z-10 flex flex-nowrap justify-center h-52 ">
-            {% for team in teamNotEurope  %}
-                <a href="{% url 'showTeam' team.id %}">
-                    <div class="flex flex-col mx-auto w-full h-full p-6">
-                        <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
-                        <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
-                    </div>
-                </a>
-            {% endfor %}
-        </div>
+<div
+    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Team Not Europe</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+        {% for team in teamNotEurope %}
+        <a href="{% url 'showTeam' team.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static team.logo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ team.name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
     </div>
+</div>
+
+<!-- 4 players with a team -->
+<div
+    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Players with a team</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+        {% for p in playersWithTeam %}
+        <a href="{% url 'show_player' p.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static p.photo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ p.last_name }} {{ p.first_name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 4 random players without a team -->
+<div
+    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Random players without a team</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+        {% for p in playersWithoutTeam %}
+        <a href="{% url 'show_player' p.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static p.photo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ p.last_name }} {{ p.first_name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 4 random female players with a team -->
+<div
+    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Random female players with a team</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+        {% for p in femalePlayersWithTeam %}
+        <a href="{% url 'show_player' p.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static p.photo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ p.last_name }} {{ p.first_name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+
 {% endblock content %}

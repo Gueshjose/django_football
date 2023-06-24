@@ -31,8 +31,13 @@ def home(request):
     
     # Team non Europ
     teamNotEurope=Team.objects.prefetch_related('continent').filter(~Q(continent__name='Europe'))
+    #4 players with team
+    playersWithTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=False)[:4]
+    # 4 random players without team
+    playersWithoutTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=True).order_by('?')[:4]
+    #4 randoms female players with a team
+    femalePlayersWithTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=False).filter(gender='F').order_by('?')[:4]
     context=locals()
-    print(context)
     return render(request, 'mercato/home/home.html', context)
 
 def back(request):
