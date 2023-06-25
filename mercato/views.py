@@ -69,6 +69,11 @@ def create_player(request):
     return render(request, 'mercato/admin/create_player.html', context)
 
 def update_player(request, id):
+    players_by_team_and_role = json.dumps(list(
+        Player.objects.values('team__id','role__poste', 'role__id')
+        .annotate(player_count=Count('id'))
+    ))
+    teams=json.dumps(list(Team.objects.values('id','maxATT','maxMID',"maxDEF",'maxG','maxREM','composition')))
     player = Player.objects.get(id=id)
     if request.method == 'POST':
         form = PlayerForm(request.POST, request.FILES, instance=player)
@@ -77,7 +82,8 @@ def update_player(request, id):
             return redirect('home')
     else:
         form = PlayerForm(instance=player)
-    return render(request, 'mercato/admin/update_player.html', {'form': form})
+    context=locals()
+    return render(request, 'mercato/admin/update_player.html', context)
 
 def delete_player(request, id):
     player = Player.objects.get(id=id)

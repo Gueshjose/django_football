@@ -9,9 +9,13 @@
 
 <!-- Team Full -->
 
-<div class="z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
+<div class="overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center mx-auto uppercase font-bold text-white text-3xl">Team Full</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52">
+    <div class=" z-10 flex flex-nowrap justify-center h-32">
 
         {% for team in fullTeam %}
         <a href="{% url 'showTeam' team.id %}">
@@ -27,9 +31,13 @@
 <!-- Team Not Full -->
 
 <div
-    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right my-6 p-2">
+    class=" overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right my-6 p-2">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Team Not Full</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+    <div class=" z-10 flex flex-nowrap justify-center h-32 ">
         {% for team in notFullTeam %}
         <a href="{% url 'showTeam' team.id %}">
             <div class="flex flex-col mx-auto w-full h-full p-6">
@@ -43,9 +51,13 @@
 
 <!-- Team Europ -->
 
-<div class="z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
+<div class="overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 bg-indigo-t mx-auto w-11/12 md:animate-slide-in-left my-6">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center mx-auto uppercase font-bold text-white text-3xl">Team Europe</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52">
+    <div class=" z-10 flex flex-nowrap justify-center h-32">
 
         {% for team in teamEurope %}
         <a href="{% url 'showTeam' team.id %}">
@@ -61,9 +73,13 @@
 <!-- Team Not Full -->
 
 <div
-    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    class=" overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Team Not Europe</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+    <div class=" z-10 flex flex-nowrap justify-center h-32 ">
         {% for team in teamNotEurope %}
         <a href="{% url 'showTeam' team.id %}">
             <div class="flex flex-col mx-auto w-full h-full p-6">
@@ -77,9 +93,13 @@
 
 <!-- 4 players with a team -->
 <div
-    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    class=" overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Players with a team</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+    <div class=" z-10 flex flex-nowrap justify-center h-32 ">
         {% for p in playersWithTeam %}
         <a href="{% url 'show_player' p.id %}">
             <div class="flex flex-col mx-auto w-full h-full p-6">
@@ -93,9 +113,13 @@
 
 <!-- 4 random players without a team -->
 <div
-    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    class=" overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Random players without a team</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+    <div class=" z-10 flex flex-nowrap justify-center h-32 ">
         {% for p in playersWithoutTeam %}
         <a href="{% url 'show_player' p.id %}">
             <div class="flex flex-col mx-auto w-full h-full p-6">
@@ -109,9 +133,13 @@
 
 <!-- 5 random female players with a team -->
 <div
-    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    class=" overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Random female players with a team</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+    <div class=" z-10 flex flex-nowrap justify-center h-32 ">
         {% for p in femalePlayersWithTeam %}
         <a href="{% url 'show_player' p.id %}">
             <div class="flex flex-col mx-auto w-full h-full p-6">
@@ -126,9 +154,13 @@
 <!-- 5 male players with a team -->
 
 <div
-    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    class=" overflow-y-hidden rounded-lg shadow-xl shadow-current z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <svg class="absolute pointer-events-none opacity-10 top-2 left-0" xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 512 512">
+            <circle cx="256" cy="256" r="192" fill="none" stroke="white" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+            <path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m256 175.15l-76.09 63.83L200 320h112l20.09-81.02L256 175.15zm76.09 63.83l52.87-22.4l25.78-73.26M447 269.97l-62.04-53.39m-205.05 22.4l-52.87-22.4l-25.78-73.26M65 269.97l62.04-53.39M256 175.15v-57.57l64-42.64m-128-.01l64 42.65M312 320l28 48l-28 71m98.74-71H342m-142-48l-28 48l28.37 71.5M101.63 368H172"/>
+        </svg>
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Male players with a team</h2>
-    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+    <div class=" z-10 flex flex-nowrap justify-center h-32 ">
         {% for p in malePlayersWithTeam %}
         <a href="{% url 'show_player' p.id %}">
             <div class="flex flex-col mx-auto w-full h-full p-6">
