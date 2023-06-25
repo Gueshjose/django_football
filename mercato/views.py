@@ -35,8 +35,10 @@ def home(request):
     playersWithTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=False)[:4]
     # 4 random players without team
     playersWithoutTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=True).order_by('?')[:4]
-    #4 randoms female players with a team
-    femalePlayersWithTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=False).filter(gender='F').order_by('?')[:4]
+    #5 randoms female players with a team
+    femalePlayersWithTeam=Player.objects.prefetch_related('role','team').filter(team__isnull=False).filter(gender='F').order_by('?')[:5]
+    #5 male players with a team
+    malePlayersWithTeam = Player.objects.prefetch_related('role','team').filter(team__isnull=False).filter(gender='H')[:5]
     context=locals()
     return render(request, 'mercato/home/home.html', context)
 

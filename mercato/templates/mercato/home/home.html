@@ -107,7 +107,7 @@
     </div>
 </div>
 
-<!-- 4 random female players with a team -->
+<!-- 5 random female players with a team -->
 <div
     class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
     <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Random female players with a team</h2>
@@ -123,5 +123,21 @@
     </div>
 </div>
 
+<!-- 5 male players with a team -->
+
+<div
+    class=" z-10 relative grid grid-cols-1 justify-center mx-auto bg-indigo-t w-11/12 md:animate-slide-in-right  my-6 p-2">
+    <h2 class="z-10 text-center uppercase font-bold text-white text-3xl">Male players with a team</h2>
+    <div class=" z-10 flex flex-nowrap justify-center h-52 ">
+        {% for p in malePlayersWithTeam %}
+        <a href="{% url 'show_player' p.id %}">
+            <div class="flex flex-col mx-auto w-full h-full p-6">
+                <img src="{% static p.photo %}" class="max-w-full max-h-full h-fit mx-auto" alt="">
+                <h3 class="text-center font-bold text-white flex mx-auto flex-nowrap">{{ p.last_name }} {{ p.first_name }}</h3>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
 
 {% endblock content %}
