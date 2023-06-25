@@ -3,6 +3,8 @@ from .models import Continent,Player, Role ,Team,Tactics
 from .teamForm import TeamForm 
 from .playerForm import PlayerForm
 from django.db.models import Q
+from django.db.models import Count
+import json
 from django.core.files.storage import default_storage
 
 # Create your views here.
@@ -42,6 +44,11 @@ def back(request):
     return render(request,'mercato/admin/home.html',context)
 
 def create_player(request):
+    players_by_team_and_role = json.dumps(list(
+        Player.objects.values('team__id','role__poste', 'role__id')
+        .annotate(player_count=Count('id'))
+    ))
+    teams=json.dumps(list(Team.objects.values('id','maxATT','maxMID',"maxDEF",'maxG','maxREM','composition')))
     role = Role.objects.all()
     team = Team.objects.all()
     if request.method == 'POST':

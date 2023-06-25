@@ -51,7 +51,11 @@
                 </div>
                 <div class="my-6 grid-cols-1 grid">
                     <label class="text-white dark:text-gray-200" for="gender">Team :</label>
-                    {{ form.team }}
+                    <select name="{{ form.team.name }}" class="rounded-lg">
+                        {% for option in form.team.field.queryset %}
+                            <option value="{{ option.pk }}" {% if option.pk == form.team.value %}selected{% endif %} class="teams">{{ option }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
 
@@ -93,7 +97,7 @@
                 <div class="grid grid-cols-2 flex flex-col sm:grid-cols-2 md:grid-cols-4 gap-2">
                     {% for r in role %}
                     <label class="text-white font-light" for="poste"><img src="{% static r.img %}" alt="">{{ r.poste }}</label>
-                    <input type="radio" name="role" id="poste" value="{{ r.id }}">
+                    <input type="radio" name="role" id="poste" class="roles" value="{{ r.id }}">
                     {% endfor %}
                     <!-- {{ form.role }} -->
               
@@ -119,4 +123,154 @@
         </div>
     </form>
 </section>
+
+<script>
+    teamsR=[]
+    teamsG=[]
+    let playersByTeamAndRole = JSON.parse('{{ players_by_team_and_role|escapejs }}'); 
+    let teams = JSON.parse('{{ teams|escapejs }}'); 
+    let teamSelected= document.querySelectorAll('.teams');
+    let roleSelected= document.querySelectorAll('.roles');
+    let gender=document.querySelector('#id_gender')
+    gender.addEventListener('change',()=>{
+        teamsG=[]
+        for (let option of teamSelected) {
+            option.disabled = false;
+        }
+        for(team of teams){
+            if(team.composition != gender.value && team.composition != "X"){
+                for (let option of teamSelected) {
+                    if (Number(option.value) == team.id) {
+                        option.disabled = true;
+                        teamsG.push(team.id)
+                    }
+                }
+            }
+        }
+        for(let team of teamsR){
+            for (let option of teamSelected) {
+                if (Number(option.value) == team) {
+                    option.disabled = true;
+                }
+            }
+        }
+    })
+    for (let role of roleSelected) {
+        role.addEventListener('change',()=>{
+            teamsR=[]
+            for (let option of teamSelected) {
+                option.disabled = false;
+            }
+            for (let playersByTeam of playersByTeamAndRole.filter(item => item.role__id == role.value)){
+                switch (playersByTeam.role__poste) {
+                    case 'Attaquant':
+                        if(playersByTeam.team__id != null){
+                            if (playersByTeam.player_count >= teams.filter(item => item.id == playersByTeam.team__id)[0].maxATT)  {
+                                for (let option of teamSelected) {
+                                    if (Number(option.value) == playersByTeam.team__id) {
+                                        option.disabled = true;
+                                        teamsR.push(playersByTeam.team__id)
+                                    }
+                                }
+                            }
+                        }
+                        for(let team of teamsG){
+                            for (let option of teamSelected) {
+                                if (Number(option.value) == team) {
+                                    option.disabled = true;
+                                }
+                            }
+                        }
+                        break;
+                
+                    case 'Millieu':
+                        if(playersByTeam.team__id != null){
+                            if (playersByTeam.player_count >= teams.filter(item => item.id == playersByTeam.team__id)[0].maxMID)  {
+                                for (let option of teamSelected) {
+                                    if (Number(option.value) == playersByTeam.team__id) {
+                                        option.disabled = true;
+                                        teamsR.push(playersByTeam.team__id)
+
+                                    }
+                                }
+                            }
+                        }
+                        for(let team of teamsG){
+                            for (let option of teamSelected) {
+                                if (Number(option.value) == team) {
+                                    option.disabled = true;
+                                }
+                            }
+                        }
+                        break;
+                
+                    case 'Defenseur':
+                        if(playersByTeam.team__id != null){
+
+                            if (playersByTeam.player_count >= teams.filter(item => item.id == playersByTeam.team__id)[0].maxDEF)  {
+                                for (let option of teamSelected) {
+                                    if (Number(option.value) == playersByTeam.team__id) {
+                                        option.disabled = true;
+                                        teamsR.push(playersByTeam.team__id)
+
+                                    }
+                                }
+                            }
+                        }
+                        for(let team of teamsG){
+                            for (let option of teamSelected) {
+                                if (Number(option.value) == team) {
+                                    option.disabled = true;
+                                }
+                            }
+                        }
+                        break;
+                
+                    case 'Gardien':
+                        if(playersByTeam.team__id != null){
+                            if (playersByTeam.player_count == teams.filter(item => item.id == playersByTeam.team__id)[0].maxG)  {
+                                for (let option of teamSelected) {
+                                    if (Number(option.value) == playersByTeam.team__id) {
+                                        option.disabled = true;
+                                        teamsR.push(playersByTeam.team__id)
+
+                                    }
+                                }
+                            }
+                        }
+                        for(let team of teamsG){
+                            for (let option of teamSelected) {
+                                if (Number(option.value) == team) {
+                                    option.disabled = true;
+                                }
+                            }
+                        }
+                        break;
+                
+                    default:
+                        if(playersByTeam.team__id != null){
+                            if (playersByTeam.player_count >= teams.filter(item => item.id == playersByTeam.team__id).maxREM)  {
+                                for (let option of teamSelected) {
+                                        if (Number(option.value) == playersByTeam.team__id) {
+                                            option.disabled = true;
+                                            teamsR.push(playersByTeam.team__id)
+
+                                        }
+                                    }
+                            }
+                        }
+                        for(let team of teamsG){
+                            for (let option of teamSelected) {
+                                if (Number(option.value) == team) {
+                                    option.disabled = true;
+                                }
+                            }
+                        }
+                        break;
+                }
+                
+            }
+        })
+    }
+</script>
 {% endblock content %}

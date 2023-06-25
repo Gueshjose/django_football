@@ -35,8 +35,8 @@ class Command(BaseCommand):
         #    Seed for Roles
         
         roles = [{'name':'Attaquant', 'img':'media/att.png'},
-                 {'name': 'Millieu', 'img':'media/def.png'},
-                 {'name':'Defenseur','img':'media/Mid.png'},
+                 {'name': 'Millieu', 'img':'media/Mid.png'},
+                 {'name':'Defenseur','img':'media/def.png'},
                  {'name':'Gardien','img':'media/GB.png'},
                  {'name':'Remplaçant','img':'media/sub.png'}
                  ]
@@ -189,7 +189,7 @@ class Command(BaseCommand):
     "Galactic Strikers"
 ]
         
-        for _ in range(5):   
+        for _ in range(12):   
             rand=randint(0,len(formation)-1)
             compo=randint(0,2)
             if compo == 0:

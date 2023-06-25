@@ -15,5 +15,5 @@ class PlayerForm(forms.ModelForm):
             'country': forms.TextInput(attrs={'class': 'rounded-lg'}),
             'photo' : forms.FileInput(attrs={'class': 'rounded-lg'}),
             'role': forms.RadioSelect(attrs={'class': 'rounded-lg'}),
-            'team': forms.Select(attrs={'class': 'rounded-lg'}),
+            'team': forms.Select(attrs={'class': ''}),
         }

@@ -1,3 +1,4 @@
+
 <!-- templates/_base.html -->
 
 {% load static %}
@@ -25,8 +26,9 @@
             <!-- Content Page -->
             {% endblock content %}
         </div>
-
-        <script type="module" src="{% static 'js/script.js' %}"></script>
+        {% if '/back/' not in request.path %}
+            <script type="module" src="{% static 'js/script.js' %}"></script>
+        {% endif %}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     </body>
 
